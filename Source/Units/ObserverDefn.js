@@ -8,5 +8,5 @@ function ObserverDefn(sightRangeInCells)
 	ObserverDefn.prototype.initializeEntityForVenue = function(entity)
 	{
 		entity.propertyAdd(new ObserverData());
-	}	
+	}
 }

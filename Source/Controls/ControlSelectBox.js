@@ -90,9 +90,9 @@ function ControlSelectBox
 		if (this.htmlElement == null)
 		{
 			var gridCellSizeInPixels = this.style.gridCellSize;
-	
+
 			var returnValue = document.createElement("select");
-	
+
 			var style = returnValue.style;
 			style.fontSize = this.style.fontSize;
 			style.border = "1px solid";
@@ -103,7 +103,7 @@ function ControlSelectBox
 			style.position = "absolute";
 			style.left = posInPixels.x;
 			style.top = posInPixels.y;
-	
+
 			returnValue.size = Math.floor
 			(
 				this.size.y / this.sizePerItem.y
@@ -112,13 +112,13 @@ function ControlSelectBox
 			for (var i = 0; i < this.items.length; i++)
 			{
 				var child = this.items[i];
-	
+
 				child.htmlElementUpdate();
 				returnValue.appendChild(child.htmlElement);
-			}	
+			}
 
-			returnValue.onchange = this.handleEventSelectionChanged.bind(this);			
-	
+			returnValue.onchange = this.handleEventSelectionChanged.bind(this);
+
 			this.htmlElement = returnValue;
 		}
 
@@ -129,7 +129,7 @@ function ControlSelectBox
 				this.controllable, 
 				this.bindingPath
 			);
-			
+
 			var indexToSelect;
 			if (this.idPathForSelectables == null)
 			{
@@ -151,7 +151,7 @@ function ControlSelectBox
 			}
 			this.htmlElement.selectedIndex = indexToSelect;
 		}
-	
+
 		return this.htmlElement;
 	}
 }

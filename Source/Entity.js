@@ -23,13 +23,13 @@ function Entity(defnName, properties)
 		for (var i = 0; i < properties.length; i++)
 		{
 			var property = properties[i];
-	
+
 			var entityForProperty = new Entity
 			(
 				defnName,
 				[
 					property
-				]			
+				]
 			);
 
 			returnValues.push(entityForProperty);

@@ -45,8 +45,8 @@ function WorldBuilder
 			this.mapSizeInCells, 
 			cells
 		);
-		
-		return returnValue;		
+
+		return returnValue;
 	}
 
 	WorldBuilder.prototype.worldGenerate = function()
@@ -72,7 +72,7 @@ function WorldBuilder
 		for (var i = 0; i < this.numberOfFactions; i++)
 		{
 			var factionDefnIndex = Math.floor
-			(	
+			(
 				Math.random() * factionDefnsNotYetUsed.length
 			);
 factionDefnIndex = 0;
@@ -143,7 +143,7 @@ basePos = new Coords(2 + i, 2 + i);
 						]
 					),
 				]
-			);	
+			);
 
 			factionDatas.push(factionData);
 		}
@@ -173,7 +173,7 @@ basePos = new Coords(2 + i, 2 + i);
 		var world = this.worldGenerate();
 		var universe = Globals.Instance.universe;
 		universe.venueAdd(world);
-		universe.nameOfVenueNext = world.name;			
+		universe.nameOfVenueNext = world.name;
 	}
 
 	WorldBuilder.prototype.controlUpdate = function()
@@ -191,7 +191,7 @@ basePos = new Coords(2 + i, 2 + i);
 				new Coords(0, 0), // pos, 
 				// children
 				[
-					new ControlLabel("labelWorldBuilder", this, style, new Coords(0, 0), "World Builder"),	
+					new ControlLabel("labelWorldBuilder", this, style, new Coords(0, 0), "World Builder"),
 					new ControlLabel("labelMapSize", this, style, new Coords(1, 2), "Map Size:"),
 					new ControlSelectBox
 					(
@@ -251,7 +251,7 @@ basePos = new Coords(2 + i, 2 + i);
 
 	WorldBuilder.prototype.initializeAsVenue = function()
 	{
-		document.body.appendChild(this.controlUpdate().htmlElement);	
+		document.body.appendChild(this.controlUpdate().htmlElement);
 	}
 
 	WorldBuilder.prototype.updateForTimerTickAsVenue = function()

@@ -4,19 +4,17 @@ function MapTerrain
 	name, 
 	codeChar, 
 	color, 
-	visual,
 	defenseMultiplier, 
 	movementCosts,
-	resourcesProducedPerTurn
+	resourcesProducedPerTurn,
+	visual
 )
 {
 	this.name = name;
 	this.codeChar = codeChar;
 	this.color = color;
-	this.visual = visual;
 	this.defenseMultiplier = defenseMultiplier;
-	this.movementCosts = movementCosts;
+	this.movementCosts = movementCosts.addLookups("movementTypeName");
 	this.resourcesProducedPerTurn = resourcesProducedPerTurn;
-
-	ArrayHelper.addLookupsToArray(this.movementCosts, "movementTypeName");
+	this.visual = visual;
 }

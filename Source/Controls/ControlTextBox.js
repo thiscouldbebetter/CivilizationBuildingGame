@@ -16,7 +16,7 @@ function ControlTextBox(name, controllable, style, size, pos, isReadOnly, text)
 		if (this.htmlElement == null)
 		{
 			var gridCellSizeInPixels = this.style.gridCellSize;
-	
+
 			var returnValue = document.createElement("input");
 			var style = returnValue.style;
 			style.fontSize = this.style.fontSize;
@@ -28,7 +28,7 @@ function ControlTextBox(name, controllable, style, size, pos, isReadOnly, text)
 			style.left = posInPixels.x;
 			style.top = posInPixels.y;
 			returnValue.readOnly = this.isReadOnly;
-	
+
 			this.htmlElement = returnValue;
 		}
 

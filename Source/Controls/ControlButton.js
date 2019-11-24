@@ -18,12 +18,12 @@ function ControlButton(name, controllable, style, size, pos, visual, click)
 		if (this.htmlElement == null)
 		{
 			var gridCellSizeInPixels = this.style.gridCellSize;
-	
+
 			var returnValue = document.createElement("button");
-	
+
 			returnValue.id = this.name;
 			returnValue.control = this;
-	
+
 			var sizeInPixels = this.size.clone().multiply(gridCellSizeInPixels);
 			var style = returnValue.style;
 			style.width = sizeInPixels.x;
@@ -34,7 +34,7 @@ function ControlButton(name, controllable, style, size, pos, visual, click)
 			style.top = posInPixels.y;
 			returnValue.innerHTML = this.visual.htmlElementUpdate();
 			returnValue.onclick = this.click;
-	
+
 			this.htmlElement = returnValue;
 		}
 

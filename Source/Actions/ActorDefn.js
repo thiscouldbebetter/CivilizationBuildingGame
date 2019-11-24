@@ -4,11 +4,9 @@ function ActorDefn(activityDefnName, actionNameToButtonMappings)
 	this.activity = new Activity(activityDefnName);
 	this.actionNameToButtonMappings = actionNameToButtonMappings;
 
-	this.actionNamesAvailable = ArrayHelper.addPropertyWithNameFromEachItemInArrayToList
+	this.actionNamesAvailable = this.actionNameToButtonMappings.addPropertyWithNameFromEachItemToList
 	(
-		"actionName",			
-		this.actionNameToButtonMappings,
-		[]
+		"actionName", []
 	);
 }
 

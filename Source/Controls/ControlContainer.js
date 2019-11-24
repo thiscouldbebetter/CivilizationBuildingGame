@@ -11,7 +11,7 @@ function ControlContainer(name, controllable, style, size, pos, children)
 	for (var i = 0; i < children.length; i++)
 	{
 		var child = children[i];
-		this.childAddOrReplace(child);	
+		this.childAddOrReplace(child);
 	}
 
 	this.hasBeenModified = true;
@@ -67,7 +67,7 @@ function ControlContainer(name, controllable, style, size, pos, children)
 			var returnValue = document.createElement("div");
 			returnValue.id = this.name;
 			returnValue.control = this;
-	
+
 			var style = returnValue.style;
 			style.border = "1px solid";
 			var sizeInPixels = this.size.clone().multiply(gridCellSizeInPixels);
@@ -77,38 +77,38 @@ function ControlContainer(name, controllable, style, size, pos, children)
 			var posInPixels = this.pos.clone().multiply(gridCellSizeInPixels);
 			style.left = posInPixels.x;
 			style.top = posInPixels.y;
-	
+
 			for (var i = 0; i < this.children.length; i++)
 			{
 				var child = this.children[i];
 				var htmlElementForChild = child.htmlElementUpdate();
 				returnValue.appendChild(htmlElementForChild);
-			}				
-	
+			}
+
 			this.htmlElement = returnValue;
 		}
 
 		var childrenOfHTMLElement = this.htmlElement.children;
 		var childrenToRemove = [];
-	
+
 		for (var i = 0; i < childrenOfHTMLElement.length; i++)
 		{
 			var childOfHTMLElement = childrenOfHTMLElement[i];
 
 			var controlForHTMLElement = childOfHTMLElement.control;
-	
+
 			if (this.children.indexOf(controlForHTMLElement) < 0)
 			{
 				childrenToRemove.push(childOfHTMLElement);
 			}
 		}
-	
+
 		for (var i = 0; i < childrenToRemove.length; i++)
 		{
 			var childToRemove = childrenToRemove[i];
-			this.htmlElement.removeChild(childToRemove);	
+			this.htmlElement.removeChild(childToRemove);
 		}
-	
+
 		for (var i = 0; i < this.children.length; i++)
 		{
 			var child = this.children[i];
@@ -122,8 +122,8 @@ function ControlContainer(name, controllable, style, size, pos, children)
 			{
 				this.htmlElement.appendChild(child.htmlElement);
 			}
-		}	
-	
-		return this.htmlElement;	
+		}
+
+		return this.htmlElement;
 	}
 }

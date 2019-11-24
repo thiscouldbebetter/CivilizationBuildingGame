@@ -27,7 +27,7 @@ function ControlGrid(name, controllable, style, size, pos, gridSizeInCells, chil
 
 			var sizeInPixels = this.size.clone().multiply(styleGridCellSizeInPixels);
 			var cellSizeInPixels = sizeInPixels.clone().divide(this.size);
-	
+
 			returnValue.cellPadding = "0px";
 			returnValue.cellSpacing = "0px";
 
@@ -49,7 +49,7 @@ function ControlGrid(name, controllable, style, size, pos, gridSizeInCells, chil
 				var trForRow = document.createElement("div");
 				trForRow.style.flow = "horizontal";
 				trForRow.style.width = sizeInPixels.x;
-				
+
 				for (var x = 0; x < this.gridSizeInCells.x; x++)
 				{
 					cellPos.x = x;
@@ -79,7 +79,7 @@ function ControlGrid(name, controllable, style, size, pos, gridSizeInCells, chil
 
 				returnValue.appendChild(trForRow);
 			}
-	
+
 			this.htmlElement = returnValue;
 		}
 
@@ -88,25 +88,25 @@ function ControlGrid(name, controllable, style, size, pos, gridSizeInCells, chil
 		/*
 		var childrenOfHTMLElement = this.htmlElement.children;
 		var childrenToRemove = [];
-	
+
 		for (var i = 0; i < childrenOfHTMLElement.length; i++)
 		{
 			var childOfHTMLElement = childrenOfHTMLElement[i];
 
 			var controlForHTMLElement = childOfHTMLElement.control;
-	
+
 			if (this.children.indexOf(controlForHTMLElement) < 0)
 			{
 				childrenToRemove.push(childOfHTMLElement);
 			}
 		}
-	
+
 		for (var i = 0; i < childrenToRemove.length; i++)
 		{
 			var childToRemove = childrenToRemove[i];
-			this.htmlElement.removeChild(childToRemove);	
+			this.htmlElement.removeChild(childToRemove);
 		}
-	
+
 		for (var i = 0; i < this.children.length; i++)
 		{
 			var child = this.children[i];
@@ -121,9 +121,9 @@ function ControlGrid(name, controllable, style, size, pos, gridSizeInCells, chil
 			{
 				this.htmlElement.appendChild(child.htmlElement);
 			}
-		}	
+		}
 		*/
-	
-		return this.htmlElement;	
+
+		return this.htmlElement;
 	}
 }

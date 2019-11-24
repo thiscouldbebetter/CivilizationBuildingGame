@@ -16,7 +16,7 @@ function BaseData_Support()
 			- numberOfMoversSupportedForFree;
 
 		if (numberOfMoversConsumingIndustry > 0)
-		{				
+		{
 			var industryConsumedPerMoverSupported = 2; // todo
 			industryConsumed = 
 				numberOfMoversConsumingIndustry 

@@ -48,13 +48,13 @@ function Faction_ResearchData
 			var technologyName = technology.name;
 
 			var isAlreadyKnown = (technologiesKnown.indexOf(technologyName) >= 0);
-		
+
 			if (isAlreadyKnown == false)
 			{
 				var prerequisites = technology.namesOfPrerequisiteTechnologies;
 
 				var areAllPrerequisitesKnown = true;
-	
+
 				for (var p = 0; p < prerequisites.length; p++)
 				{
 					var prerequisite = prerequisites[p];
@@ -80,13 +80,13 @@ function Faction_ResearchData
 	Faction_ResearchData.prototype.technologyBeingResearched = function()
 	{
 		var returnValue = null;
-			
+
 		if (this.nameOfTechnologyBeingResearched != null)
 		{
 			var universe = Globals.Instance.universe;
 			var returnValue = universe.defn.technologies()[this.nameOfTechnologyBeingResearched].technologyDefn;
 		}
-		
+
 		return returnValue;
 	}
 
@@ -96,15 +96,15 @@ function Faction_ResearchData
 
 		if (technologyBeingResearched != null)
 		{
-			this.researchStockpiled += this.researchForFactionThisTurn(faction);		
-	
+			this.researchStockpiled += this.researchForFactionThisTurn(faction);
+
 			if (this.researchStockpiled >= technologyBeingResearched.researchRequired)
 			{
 				this.namesOfTechnologiesKnown.push
 				(
 					this.nameOfTechnologyBeingResearched
 				);
-	
+
 				this.nameOfTechnologyBeingResearched = null;
 			}
 
@@ -127,7 +127,7 @@ function Faction_ResearchData
 				pos,
 				[
 					new ControlLabel("labelResearch", this, style, new Coords(1, 1), "Researching:"),
-					
+
 					new ControlSelectBox
 					(
 						"listboxResearch", 
@@ -140,7 +140,7 @@ function Faction_ResearchData
 						(
 							style,
 							true, // includeOptionForNone
-							this.technologiesResearchable()	
+							this.technologiesResearchable()
 						),
 						null, // selectedItemChanged
 						/*
@@ -153,7 +153,7 @@ function Faction_ResearchData
 							faction.factionData.research.nameOfTechnologyBeingResearched = technologyName;
 						}
 						*/
-						"nameOfTechnologyBeingResearched", // bindingPath						
+						"nameOfTechnologyBeingResearched", // bindingPath
 						"name" // idPathOfSelectables
 					),
 
@@ -164,7 +164,7 @@ function Faction_ResearchData
 
 			this.control = control;
 		}
-		
+
 		if (this.control.hasBeenModified == true)
 		{
 			var technologyBeingResearched = this.technologyBeingResearched();
@@ -184,7 +184,7 @@ function Faction_ResearchData
 
 			var infoProgress = this.control.children["infoProgress"];
 			infoProgress.text_Set(messageForResearchProgress);
-	
+
 			this.control.htmlElementUpdate();
 
 			this.control.hasBeenModified = false;

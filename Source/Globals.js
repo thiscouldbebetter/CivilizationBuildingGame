@@ -6,16 +6,16 @@ function Globals()
 
 	Globals.prototype.handleEventTimerTick = function()
 	{
-		this.universe.updateForTimerTick();	
+		this.universe.updateForTimerTick();
 		this.inputHelper.updateForTimerTick();
 	}
 
-	Globals.prototype.initialize = function(displayHelper, inputHelper, universe)
+	Globals.prototype.initialize = function(display, inputHelper, universe)
 	{
-		this.displayHelper = displayHelper;
+		this.display = display;
 		this.universe = universe;
 
-		this.displayHelper.initialize();
+		this.display.initialize();
 
 		this.inputHelper = inputHelper;
 		this.inputHelper.initialize();

@@ -2,9 +2,8 @@
 function Universe(defn, venues, nameOfVenueInitial)
 {
 	this.defn = defn;
-	this.venues = venues;
+	this.venues = venues.addLookups("name");
 
-	ArrayHelper.addLookupsToArray(this.venues, "name");
 	this.nameOfVenueCurrent = nameOfVenueInitial;
 	this.nameOfVenueNext = null;
 }

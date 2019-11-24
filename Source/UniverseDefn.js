@@ -10,15 +10,10 @@ function UniverseDefn
 )
 {
 	this.actionsAll = actionsAll;
-	this.activityDefns = activityDefns;
-	this.resourceDefns = resourceDefns;
-	this.movementTypes = movementTypes;
-	this.mapTerrains = mapTerrains;
-
-	ArrayHelper.addLookupsToArray(this.activityDefns, "name");
-	ArrayHelper.addLookupsToArray(this.resourceDefns, "name");	
-	ArrayHelper.addLookupsToArray(this.movementTypes, "name");	
-	ArrayHelper.addLookupsToArray(this.mapTerrains, "codeChar");
+	this.activityDefns = activityDefns.addLookups("name");
+	this.resourceDefns = resourceDefns.addLookups("name");
+	this.movementTypes = movementTypes.addLookups("name");
+	this.mapTerrains = mapTerrains.addLookups("codeChar");
 
 	this.entityDefns = [];
 	this.entityDefnsByCategoryName = [];

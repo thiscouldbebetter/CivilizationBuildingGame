@@ -35,7 +35,7 @@ function FactionData
 	// static methods
 
 	FactionData.updateEntityForTurn = function(entity)
-	{		
+	{
 		entity.factionData.research.updateFactionForTurn(entity);
 
 		entity.factionData.factionableIndexSelected = null;
@@ -50,7 +50,7 @@ function FactionData
 
 	FactionData.prototype.factionableSelectedAdvance = function()
 	{
-		var factionableIndexToSelect = this.factionableIndexSelected;		
+		var factionableIndexToSelect = this.factionableIndexSelected;
 
 		if (this.factionables.length == 0)
 		{
@@ -65,9 +65,9 @@ function FactionData
 			else
 			{
 				var factionableSelectedOriginal = this.factionableSelected();
-	
+
 				for (var i = 0; i < this.factionables.length; i++)
-				{	
+				{
 					factionableIndexToSelect++;
 					if (factionableIndexToSelect >= this.factionables.length)
 					{
@@ -160,7 +160,7 @@ function FactionData
 
 			this.research.controlUpdate();
 
-			// todo			
+			// todo
 		}
 
 		return this.control;
@@ -171,7 +171,7 @@ function FactionData
 	FactionData.prototype.initializeEntityForVenue = function(entity, venue)
 	{
 		entity.actorData.activity.defnName = this.activity.defnName;
-		
+
 		var map = venue.map; //Globals.Instance.universe.world().map;
 
 		this.mapKnown = Map.buildBlank
@@ -200,10 +200,10 @@ function FactionData
 		{
 			var factionable = this.factionables[i];
 			this.factionables.splice
-			(	
+			(
 				this.factionables.indexOf(factionable),
 				1
-			);		
+			);
 		}
 
 		this.factionablesToRemove.length = 0;

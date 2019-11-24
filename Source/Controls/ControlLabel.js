@@ -27,7 +27,7 @@ function ControlLabel(name, controllable, style, pos, text)
 			var returnValue = document.createElement("div");
 			returnValue.id = this.name;
 			returnValue.control = this;
-	
+
 			var style = returnValue.style;
 			style.fontSize = this.style.fontSize;
 

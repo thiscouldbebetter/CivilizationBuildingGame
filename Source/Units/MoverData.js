@@ -16,7 +16,7 @@ function MoverData(nameOfHomeBase)
 	MoverData.updateEntityForTurn = function(entity)
 	{
 		entity.moverData.movesThisTurn = entity.defn().moverDefn.movesPerTurn;
-	}	
+	}
 
 	// instance methods
 
@@ -72,7 +72,7 @@ function MoverData(nameOfHomeBase)
 
 				]
 			);
-	
+
 			returnValue.controllable = this;
 			mover.control = returnValue;
 		}

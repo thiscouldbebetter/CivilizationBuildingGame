@@ -9,7 +9,7 @@ function InputHelper(actionsAll, bindings)
 	this.actionsAll = actionsAll;
 	this.bindings_Set(bindings);
 
-	ArrayHelper.addLookupsToArray(this.actionsAll, "name");
+	this.actionsAll.addLookups("name");
 }
 
 {
@@ -36,7 +36,7 @@ function InputHelper(actionsAll, bindings)
 	InputHelper.prototype.handleEventKeyDown = function(event)
 	{
 		var keycode = event.keyCode;
-			
+
 		var binding = this.keycodeToBindingLookup[keycode];
 		if (binding != null)
 		{
@@ -69,6 +69,6 @@ function InputHelper(actionsAll, bindings)
 
 	InputHelper.prototype.updateForTimerTick = function()
 	{
-		this.actionsActive.length = 0;		
+		this.actionsActive.length = 0;
 	}
 }

@@ -4,7 +4,7 @@ function ActionNameToButtonMapping(actionName, buttonSize, buttonPos, buttonText
 	this.actionName = actionName;
 	this.buttonSize = buttonSize;
 	this.buttonPos = buttonPos;
-	this.buttonText = buttonText;	
+	this.buttonText = buttonText;
 }
 
 {

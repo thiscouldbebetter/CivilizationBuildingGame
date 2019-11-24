@@ -6,7 +6,7 @@ function main()
 
 	var inputs = new Input_Instances();
 
-	ArrayHelper.addLookupsToArray(universeDefn.actionsAll, "name");
+	universeDefn.actionsAll.addLookups("name");
 
 	var bindingsAll =
 	[ 
@@ -34,7 +34,7 @@ function main()
 		universeDefn.mapTerrains, 
 		mapSizeInCells,
 		mapCellSizeInPixels
-	);	
+	);
 
 	var universe = new Universe
 	(
@@ -43,7 +43,7 @@ function main()
 		worldBuilder.name // nameOfVenueInitial
 	);
 
-	var displayHelper = new DisplayHelper
+	var display = new Display
 	(
 		// displaySizeInPixels
 		mapCellSizeInPixels.clone().multiply
@@ -55,7 +55,7 @@ function main()
 
 	Globals.Instance.initialize
 	(
-		displayHelper,
+		display,
 		inputHelper,
 		universe
 	);

@@ -22,8 +22,7 @@ function Direction(name, symbol, offset)
 			this.South,
 			this.West,
 			this.North,
-		];
+		].addLookups("name");
 
-		ArrayHelper.addLookupsToArray(this._All, "name");
 	}
 }

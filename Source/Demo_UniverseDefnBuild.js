@@ -44,9 +44,7 @@ function Demo_UniverseDefnBuild(mapCellSizeInPixels)
 		new ResourceDefn("Food"),
 		new ResourceDefn("Industry"),
 		new ResourceDefn("Research"),
-	];
-
-	ArrayHelper.addLookupsToArray(resourceDefns, "name");
+	].addLookups(resourceDefns, "name");
 
 	var ed = EmplacementDefn;
 
@@ -72,16 +70,16 @@ function Demo_UniverseDefnBuild(mapCellSizeInPixels)
 		name, 
 		codeChar, 
 		color, 
-		textForVisual,
 		defenseMultiplier, 
 		movementCostsGroundAndWater,
 		commerceFoodIndustryPerTurn, 
 		bonusesFromRoadsIrrigationMines,
-		turnsToBuildRoadsIrrigationMines
+		turnsToBuildRoadsIrrigationMines,
+		visual
 	)
 	{
 		var movementCosts = [new MovementCost("Air", 1)];
-		
+
 		var movementCostGround = movementCostsGroundAndWater[0];
 		var movementCostWater = movementCostsGroundAndWater[1];
 
@@ -106,60 +104,59 @@ function Demo_UniverseDefnBuild(mapCellSizeInPixels)
 			name, 
 			codeChar, 
 			color, 
-			new VisualText(textForVisual),
 			defenseMultiplier, 
 			movementCosts,
 			[
 				new Resource("Commerce", commerceFoodIndustryPerTurn[0]), 
 				new Resource("Food", 	 commerceFoodIndustryPerTurn[1]), 
 				new Resource("Industry", commerceFoodIndustryPerTurn[2]),
-			]
+			],
 			// todo - bonuses and times to build upgrades
+			visual
 		);
 
 		return returnValue;
 	}
 
 	var bmt = buildMapTerrain;
+	var vt = function(text) { return new VisualText(text); };
 
 	var mapTerrains =
 	[
-		//   name     		code    color		vis  df 	mg mw 	 c  f  i   cr fi im   tr ti tm
-		bmt("Desert", 		"d",  	"Tan", 		"d", 1, 	[1, 0], [0, 0, 1], [1, 1, 1], [2, 5, 5]),
-		bmt("Desert-Oasis",  	"do", 	"Tan", 		"o", 1, 	[1, 0], [0, 3, 1], [1, 1, 1], [5, 5, 2]),
-		bmt("Desert-Oil",	"dp", 	"Tan", 		"p", 1, 	[1, 1], [0, 0, 4], [1, 1, 1], [5, 5, 2]),
-		bmt("Glacier",		"g",   	"White", 	"g", 1, 	[2, 0], [0, 0, 0], [0, 0, 1], [2, 5, 15]),
-		bmt("Glacier-Ivory",  	"gi", 	"White", 	"i", 1, 	[2, 0], [4, 1, 1], [0, 0, 1], [2, 5, 15]),
-		bmt("Glacier-Oil",	"gp", 	"White",  	"gp",1, 	[2, 0], [0, 0, 4], [0, 0, 1], [2, 5, 15]),
-		bmt("Forest", 		"f",  	"DarkGreen", 	"f", 1.5, 	[2, 0], [0, 1, 2], [0, 0, 0], [0, 0, 0]),
-		bmt("Forest-Birds",	"fb", 	"DarkGreen", 	"fb",1.5,	[2, 0], [0, 3, 2], [0, 0, 0], [0, 0, 0]), 
-		bmt("Forest-Silk",	"fs", 	"DarkGreen", 	"fs",1.5, 	[2, 0], [3, 1, 2], [0, 0, 0], [0, 0, 0]), 
-		bmt("Grassland", 	".", 	"Green", 	"g", 1, 	[1, 0], [0, 2, 0], [0, 0, 0], [0, 0, 0]),
-		bmt("Grassland-Rich", 	".r", 	"Green", 	"gr",1, 	[1, 0], [0, 2, 1], [1, 1, 0], [2, 5, 0]),	
-		bmt("Hills", 		"h", 	"Green", 	"h", 2,		[2, 0], [0, 1, 0], [0, 1, 3], [2, 10, 10]), 
-		bmt("Hills-Coal",	"hc", 	"Green", 	"hc", 2,	[2, 0], [0, 1, 2], [0, 1, 3], [2, 10, 10]), 
-		bmt("Hills-Wine", 	"hw", 	"Green", 	"hw", 2,	[2, 0], [4, 1, 0], [0, 1, 3], [2, 10, 10]), 
-		bmt("Jungle", 		"j", 	"DarkGreen", 	"j", 1.5,	[2, 0], [0, 1, 0], [0, 0, 0], [0, 0, 0]),
-		bmt("Jungle-Gems", 	"jg", 	"DarkGreen", 	"jg", 1.5,	[2, 0], [4, 1, 0], [0, 0, 0], [0, 0, 0]),
-		bmt("Jungle-Fruit", 	"jf", 	"DarkGreen", 	"jf", 1.5,	[2, 0], [1, 4, 0], [0, 0, 0], [0, 0, 0]),
-		bmt("Mountain", 	"m", 	"Gray",		"m", 3, 	[3, 0], [0, 0, 1], [0, 0, 1], [0, 0, 10]),
-		bmt("Mountain-Gold", 	"mg", 	"Gray",		"mg", 3, 	[3, 0], [6, 0, 1], [0, 0, 1], [0, 0, 10]),
-		bmt("Mountain-Iron", 	"mi", 	"Gray",		"mi", 3, 	[3, 0], [0, 0, 4], [0, 0, 1], [0, 0, 10]),
-		bmt("Ocean", 		"~", 	"Blue", 	"~", 1, 	[0, 1], [2, 1, 0], [0, 0, 0], [0, 0, 0]),
-		bmt("Ocean-Fish", 	"~f", 	"Blue", 	"~f", 1, 	[0, 1], [2, 3, 0], [0, 0, 0], [0, 0, 0]),
-		bmt("Ocean-Whales", 	"~w", 	"Blue", 	"~w", 1, 	[0, 1], [3, 2, 2], [0, 0, 0], [0, 0, 0]),
-		bmt("Plains",		"p",	"Yellow", 	"p", 1,		[1, 0], [0, 1, 1], [1, 1, 0], [2, 5, 0]),
-		bmt("Plains-Buffalo",	"pb",	"Yellow", 	"pb", 1,	[1, 0], [0, 1, 3], [1, 1, 0], [2, 5, 0]),
-		bmt("Plains-Wheat",	"pw",	"Yellow", 	"pw", 1,	[1, 0], [0, 3, 1], [1, 1, 0], [2, 5, 0]),
-		bmt("Swamp", 		"s",	"DarkGreen", 	"s", 1.5, 	[2, 0], [0, 1, 0], [0, 0, 0], [0, 0, 0]),
-		bmt("Swamp-Peat", 	"sp",	"DarkGreen", 	"sp", 1.5, 	[2, 0], [0, 1, 4], [0, 0, 0], [0, 0, 0]),
-		bmt("Swamp-Spice", 	"ss",	"DarkGreen", 	"ss", 1.5, 	[2, 0], [4, 3, 0], [0, 0, 0], [0, 0, 0]),
-		bmt("Tundra", 		"t", 	"LightGray", 	"t", 1, 	[1, 0], [0, 1, 0], [0, 1, 0], [0, 5, 0]),
-		bmt("Tundra-Oxen", 	"to", 	"LightGray", 	"to", 1, 	[1, 0], [0, 3, 1], [0, 1, 0], [0, 5, 0]),
-		bmt("Tundra-Furs", 	"tf", 	"LightGray", 	"tf", 1, 	[1, 0], [3, 2, 0], [0, 1, 0], [0, 5, 0]),
-	];
-
-	ArrayHelper.addLookupsToArray(mapTerrains);
+		//   name 				code    color			df 		mg mw 	 c  f  i   cr fi im   tr ti tm		visual
+		bmt("Desert", 			"d",  	"Tan", 			1, 		[1, 0], [0, 0, 1], [1, 1, 1], [2, 5, 5],	vt("d")),
+		bmt("Desert-Oasis", 	"do", 	"Tan", 			1, 		[1, 0], [0, 3, 1], [1, 1, 1], [5, 5, 2],	vt("o")),
+		bmt("Desert-Oil", 		"dp", 	"Tan", 			1, 		[1, 1], [0, 0, 4], [1, 1, 1], [5, 5, 2],	vt("p")),
+		bmt("Glacier", 			"g",   	"White", 		1, 		[2, 0], [0, 0, 0], [0, 0, 1], [2, 5, 15],	vt("g")),
+		bmt("Glacier-Ivory", 	"gi", 	"White", 		1, 		[2, 0], [4, 1, 1], [0, 0, 1], [2, 5, 15],	vt("i")),
+		bmt("Glacier-Oil", 		"gp", 	"White",  		1, 		[2, 0], [0, 0, 4], [0, 0, 1], [2, 5, 15],	vt("gp")),
+		bmt("Forest", 			"f",  	"DarkGreen", 	1.5, 	[2, 0], [0, 1, 2], [0, 0, 0], [0, 0, 0],	vt("f")),
+		bmt("Forest-Birds", 	"fb", 	"DarkGreen", 	1.5,	[2, 0], [0, 3, 2], [0, 0, 0], [0, 0, 0],	vt("fb")),
+		bmt("Forest-Silk", 		"fs", 	"DarkGreen", 	1.5, 	[2, 0], [3, 1, 2], [0, 0, 0], [0, 0, 0],	vt("fs")),
+		bmt("Grassland", 		".", 	"Green", 		1, 		[1, 0], [0, 2, 0], [0, 0, 0], [0, 0, 0],	vt("g")),
+		bmt("Grassland-Rich", 	".r", 	"Green", 		1, 		[1, 0], [0, 2, 1], [1, 1, 0], [2, 5, 0],	vt("gr")),
+		bmt("Hills", 			"h", 	"Green", 		2,		[2, 0], [0, 1, 0], [0, 1, 3], [2, 10, 10],	vt("h")),
+		bmt("Hills-Coal", 		"hc", 	"Green", 		2,		[2, 0], [0, 1, 2], [0, 1, 3], [2, 10, 10],	vt("hc")),
+		bmt("Hills-Wine", 		"hw", 	"Green", 		2,		[2, 0], [4, 1, 0], [0, 1, 3], [2, 10, 10],	vt("hw")),
+		bmt("Jungle", 			"j", 	"DarkGreen", 	1.5,	[2, 0], [0, 1, 0], [0, 0, 0], [0, 0, 0],	vt("j")),
+		bmt("Jungle-Gems", 		"jg", 	"DarkGreen", 	1.5,	[2, 0], [4, 1, 0], [0, 0, 0], [0, 0, 0],	vt("jg")),
+		bmt("Jungle-Fruit", 	"jf", 	"DarkGreen", 	1.5,	[2, 0], [1, 4, 0], [0, 0, 0], [0, 0, 0],	vt("jf")),
+		bmt("Mountain", 		"m", 	"Gray",			3, 		[3, 0], [0, 0, 1], [0, 0, 1], [0, 0, 10],	vt("m")),
+		bmt("Mountain-Gold", 	"mg", 	"Gray",			3, 		[3, 0], [6, 0, 1], [0, 0, 1], [0, 0, 10],	vt("mg")),
+		bmt("Mountain-Iron", 	"mi", 	"Gray",			3, 		[3, 0], [0, 0, 4], [0, 0, 1], [0, 0, 10],	vt("mi")),
+		bmt("Ocean", 			"~", 	"Blue", 		1, 		[0, 1], [2, 1, 0], [0, 0, 0], [0, 0, 0],	vt("~")),
+		bmt("Ocean-Fish", 		"~f", 	"Blue", 		1, 		[0, 1], [2, 3, 0], [0, 0, 0], [0, 0, 0],	vt("~f")),
+		bmt("Ocean-Whales", 	"~w", 	"Blue", 		1, 		[0, 1], [3, 2, 2], [0, 0, 0], [0, 0, 0],	vt("~w")),
+		bmt("Plains",			"p",	"Yellow", 		1,		[1, 0], [0, 1, 1], [1, 1, 0], [2, 5, 0],	vt("p")),
+		bmt("Plains-Buffalo",	"pb",	"Yellow", 		1,		[1, 0], [0, 1, 3], [1, 1, 0], [2, 5, 0],	vt("pb")),
+		bmt("Plains-Wheat",		"pw",	"Yellow", 		1,		[1, 0], [0, 3, 1], [1, 1, 0], [2, 5, 0],	vt("pw")),
+		bmt("Swamp", 			"s",	"DarkGreen", 	1.5, 	[2, 0], [0, 1, 0], [0, 0, 0], [0, 0, 0],	vt("s")),
+		bmt("Swamp-Peat", 		"sp",	"DarkGreen", 	1.5, 	[2, 0], [0, 1, 4], [0, 0, 0], [0, 0, 0],	vt("sp")),
+		bmt("Swamp-Spice", 		"ss",	"DarkGreen", 	1.5, 	[2, 0], [4, 3, 0], [0, 0, 0], [0, 0, 0],	vt("ss")),
+		bmt("Tundra", 			"t", 	"LightGray", 	1, 		[1, 0], [0, 1, 0], [0, 1, 0], [0, 5, 0],	vt("t")),
+		bmt("Tundra-Oxen", 		"to", 	"LightGray", 	1, 		[1, 0], [0, 3, 1], [0, 1, 0], [0, 5, 0],	vt("to")),
+		bmt("Tundra-Furs", 		"tf", 	"LightGray", 	1, 		[1, 0], [3, 2, 0], [0, 1, 0], [0, 5, 0],	vt("tf")),
+	].addLookups(mapTerrains);
 
 	Direction.Instances = new Direction_Instances();
 
@@ -199,7 +196,7 @@ function Demo_UniverseDefnBuild(mapCellSizeInPixels)
 			false, // hasSenate,
 			3, // maxCitizensPerBaseBeforeUnhappiness,
 			3, // maxCitizensPerBaseMadeContentByGarrison,
-			0, // numberOfCitizensMadeUnhappyPerDeployedArmy,	
+			0, // numberOfCitizensMadeUnhappyPerDeployedArmy,
 			0, // foodAddedPerCellWithIrrigation,
 			0, // commerceAddedPerCellWithCommerce,
 			0, // fractionOfCommercePerBaseWastedFlat,
@@ -212,7 +209,7 @@ function Demo_UniverseDefnBuild(mapCellSizeInPixels)
 			false, // hasSenate,
 			2, // maxCitizensPerBaseBeforeUnhappiness,
 			3, // maxCitizensPerBaseMadeContentByGarrison,
-			0, // numberOfCitizensMadeUnhappyPerDeployedArmy,	
+			0, // numberOfCitizensMadeUnhappyPerDeployedArmy,
 			1, // foodAddedPerCellWithIrrigation,
 			0, // commerceAddedPerCellWithCommerce,
 			0, // fractionOfCommercePerBaseWastedFlat,
@@ -225,7 +222,7 @@ function Demo_UniverseDefnBuild(mapCellSizeInPixels)
 			true, // hasSenate,
 			1, // maxCitizensPerBaseBeforeUnhappiness,
 			0, // maxCitizensPerBaseMadeContentByGarrison,
-			1, // numberOfCitizensMadeUnhappyPerDeployedArmy,	
+			1, // numberOfCitizensMadeUnhappyPerDeployedArmy,
 			1, // foodAddedPerCellWithIrrigation,
 			1, // commerceAddedPerCellWithCommerce,
 			0, // fractionOfCommercePerBaseWastedFlat,
@@ -238,7 +235,7 @@ function Demo_UniverseDefnBuild(mapCellSizeInPixels)
 			true, // hasSenate,
 			0, // maxCitizensPerBaseBeforeUnhappiness,
 			0, // maxCitizensPerBaseMadeContentByGarrison,
-			2, // numberOfCitizensMadeUnhappyPerDeployedArmy,	
+			2, // numberOfCitizensMadeUnhappyPerDeployedArmy,
 			1, // foodAddedPerCellWithIrrigation,
 			2, // commerceAddedPerCellWithCommerce,
 			0, // fractionOfCommercePerBaseWastedFlat,
@@ -251,7 +248,7 @@ function Demo_UniverseDefnBuild(mapCellSizeInPixels)
 			false, // hasSenate,
 			0, // maxCitizensPerBaseBeforeUnhappiness,
 			3, // maxCitizensPerBaseMadeContentByGarrison,
-			0, // numberOfCitizensMadeUnhappyPerDeployedArmy,	
+			0, // numberOfCitizensMadeUnhappyPerDeployedArmy,
 			1, // foodAddedPerCellWithIrrigation,
 			0, // commerceAddedPerCellWithCommerce,
 			.1, // fractionOfCommercePerBaseWastedFlat,
@@ -305,7 +302,7 @@ function Demo_UniverseDefnBuild(mapCellSizeInPixels)
 	var entityDefnsForImprovementDefns = EntityDefn.buildManyForProperties
 	(
 		improvementDefns
-	);	
+	);
 
 	var entityDefnForBase = new EntityDefn
 	(
@@ -314,7 +311,7 @@ function Demo_UniverseDefnBuild(mapCellSizeInPixels)
 			new ActorDefn
 			(
 				null, // activityDefnName
-				[					
+				[
 					new ActionNameToButtonMapping("Pass", new Coords(3, 2), new Coords(1, 1), "Pass"),
 				]
 			),
@@ -331,7 +328,7 @@ function Demo_UniverseDefnBuild(mapCellSizeInPixels)
 	var killableDefn1 = new KillableDefn(1);
 	var turnableDefnForMovers = new TurnableDefn
 	(
-		MoverData.updateEntityForTurn	
+		MoverData.updateEntityForTurn
 	);
 
 	function buildEntityDefnForMover
@@ -488,7 +485,7 @@ function Demo_UniverseDefnBuild(mapCellSizeInPixels)
 		new td("Horseback Riding", 	10, [], 					[ "Riders" ]		 			),
 		new td("Industrialization", 	10, [ "Banking", "Railroad" ], 			[ ]						),
 		new td("Invention", 		10, [ "Engineering", "Literacy" ], 		[ ]						),
-		new td("Iron Working", 		10, [ "Bronze Working" ], 			[ "Swordsmen" ] 				),		
+		new td("Iron Working", 		10, [ "Bronze Working" ], 			[ "Swordsmen" ] 				),
 		new td("Labor Union", 		10, [ "Guerilla Warfare", "Mass Production" ], 	[ ]						),
 		new td("The Laser",		10, [ "Mass Production", "Nuclear Power" ], 	[ ]						),
 		new td("Leadership",		10, [ "Chivalry", "Gunpowder" ], 		[ ]						),
@@ -563,7 +560,7 @@ function Demo_UniverseDefnBuild(mapCellSizeInPixels)
 		[
 			entityDefnsForGovernmentDefns,
 			entityDefnsForLocatables,
-			entityDefnsForTechnologyDefns,	
+			entityDefnsForTechnologyDefns,
 			entityDefnsForImprovementDefns,
 			[ entityDefnFaction ],
 		]

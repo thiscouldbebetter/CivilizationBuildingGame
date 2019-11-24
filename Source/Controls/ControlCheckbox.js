@@ -16,9 +16,9 @@ function ControlCheckbox(name, controllable, style, pos, isChecked)
 		if (this.htmlElement == null)
 		{
 			var gridCellSizeInPixels = this.style.gridCellSize;
-	
+
 			var returnValue = document.createElement("input");
-	
+
 			returnValue.id = this.name;
 			returnValue.type = "checkbox";
 			returnValue.checked = this.isChecked;
@@ -34,7 +34,7 @@ function ControlCheckbox(name, controllable, style, pos, isChecked)
 				style.left = posInPixels.x;
 				style.top = posInPixels.y;
 			}
-	
+
 			this.htmlElement = returnValue;
 		}
 

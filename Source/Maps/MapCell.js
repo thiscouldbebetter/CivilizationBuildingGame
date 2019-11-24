@@ -27,23 +27,21 @@ function MapCell(terrainCodeChar, improvementsPresent, entitiesPresent)
 			this.improvementsPresent.slice(0),
 			this.entitiesPresent.slice(0)
 		)
-	}	
+	}
 
 	MapCell.prototype.overwriteWith = function(other)
 	{
 		this.terrainCodeChar = other.terrainCodeChar;
 
 		this.improvementsPresent.length = 0;
-		ArrayHelper.appendItemsFromArrayToArray
+		other.improvementsPresent.appendTo
 		(
-			other.improvementsPresent,
 			this.improvementsPresent
 		);
 
 		this.entitiesPresent.length = 0;
-		ArrayHelper.appendItemsFromArrayToArray
+		other.entitiesPresent.appendTo
 		(
-			other.entitiesPresent,
 			this.entitiesPresent
 		);
 	}

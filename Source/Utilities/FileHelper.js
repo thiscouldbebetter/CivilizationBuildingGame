@@ -8,7 +8,7 @@ function FileHelper()
 	FileHelper.saveTextToFile = function(textToWrite, fileNameToSaveAs)
 	{
 		var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
-	
+
 		var downloadLink = document.createElement("a");
 		downloadLink.download = fileNameToSaveAs;
 		downloadLink.innerHTML = "Download File";
@@ -27,7 +27,7 @@ function FileHelper()
 			downloadLink.style.display = "none";
 			document.body.appendChild(downloadLink);
 		}
-	
+
 		downloadLink.click();
 	}
 

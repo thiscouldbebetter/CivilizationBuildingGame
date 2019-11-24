@@ -64,7 +64,7 @@ function Serializer(knownTypes)
 	Serializer.prototype.setClassNameRecursively = function(objectToSetClassNameOn)
 	{
 		var className = objectToSetClassNameOn.constructor.name;
-		
+
 		if (this.knownTypes[className] != null)
 		{
 			for (var childPropertyName in objectToSetClassNameOn)
@@ -92,7 +92,7 @@ function Serializer(knownTypes)
 		if (typeOfObjectToSetPrototypeOn != null)
 		{
 			objectToSetPrototypeOn.__proto__ = typeOfObjectToSetPrototypeOn.prototype;
-	
+
 			for (var childPropertyName in objectToSetPrototypeOn)
 			{
 				var childProperty = objectToSetPrototypeOn[childPropertyName];

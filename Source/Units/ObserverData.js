@@ -15,7 +15,7 @@ function ObserverData()
 		(
 			posInCells.clone().subtract
 			(
-				viewSizeHalfInCells	
+				viewSizeHalfInCells
 			).trimToRangeMax
 			(
 				factionMapKnown.sizeInCellsMinusOnes
@@ -52,7 +52,7 @@ function ObserverData()
 		(
 			posInCells.clone().subtract
 			(
-				viewSizeHalfInCells	
+				viewSizeHalfInCells
 			).trimToRangeMax
 			(
 				factionMapKnown.sizeInCellsMinusOnes

@@ -25,13 +25,13 @@ function BaseData_Industry
 	BaseData_Industry.prototype.entityDefnBeingBuilt = function()
 	{
 		var returnValue = null;
-			
+
 		if (this.nameOfEntityDefnBeingBuilt != null)
 		{
 			var universe = Globals.Instance.universe;
 			var returnValue = universe.defn.entityDefns[this.nameOfEntityDefnBeingBuilt];
 		}
-		
+
 		return returnValue;
 	}
 
@@ -44,11 +44,11 @@ function BaseData_Industry
 			var baseData = base.baseData;
 			var resourcesProduced = baseData.resourcesProducedByBaseThisTurn(base);
 			var industryProduced = resourcesProduced["Industry"].quantity;
-	
+
 			var industryConsumed = baseData.support.industryConsumedByMoversSupported();
-	
+
 			this.industryStockpiled += (industryProduced - industryConsumed);
-	
+
 			var buildableDefn = entityDefnBeingBuilt.buildableDefn;
 
 			if (this.industryStockpiled >= buildableDefn.industryToBuild)
@@ -57,8 +57,8 @@ function BaseData_Industry
 				(
 					entityDefnBeingBuilt, 
 					base
-				);	
-	
+				);
+
 				this.nameOfEntityDefnBeingBuilt = null;
 				this.industryStockpiled = 0;
 			}
@@ -83,7 +83,7 @@ function BaseData_Industry
 				pos,
 				[
 					new ControlLabel("labelBuilding", this, style, new Coords(1, 1), "Building:"),
-					
+
 					new ControlSelectBox
 					(
 						"listboxEntityDefnBeingBuilt", 
@@ -124,7 +124,7 @@ function BaseData_Industry
 		{
 			var entityDefnBeingBuilt = this.entityDefnBeingBuilt();
 			var messageForBuildProgress; 
-	
+
 			if (entityDefnBeingBuilt == null)
 			{
 				messageForBuildProgress = "[none]";

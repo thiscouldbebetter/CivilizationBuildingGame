@@ -1,12 +1,12 @@
 
-function DisplayHelper(displaySizeInPixels, isColorEnabled)
+function Display(displaySizeInPixels, isColorEnabled)
 {
 	this.displaySizeInPixels = displaySizeInPixels;
 	this.isColorEnabled = isColorEnabled;
 }
 
 {
-	DisplayHelper.prototype.clear = function()
+	Display.prototype.clear = function()
 	{
 		this.graphics.fillStyle = (this.isColorEnabled == true ? "Black" : "White");
 		this.graphics.fillRect
@@ -17,7 +17,7 @@ function DisplayHelper(displaySizeInPixels, isColorEnabled)
 		);
 	}
 
-	DisplayHelper.prototype.drawControl = function(control)
+	Display.prototype.drawControl = function(control)
 	{
 		var controlExisting = document.getElementById(control.name);
 		if (controlExisting == null)
@@ -26,11 +26,11 @@ function DisplayHelper(displaySizeInPixels, isColorEnabled)
 		}
 		else
 		{
-			// todo	
-		}		
+			// todo
+		}
 	}
 
-	DisplayHelper.prototype.drawMapForCamera = function(map, camera)
+	Display.prototype.drawMapForCamera = function(map, camera)
 	{
 		var mapTerrains = map.terrains;
 		var mapSizeInCells = map.sizeInCells;
@@ -59,7 +59,7 @@ function DisplayHelper(displaySizeInPixels, isColorEnabled)
 		}
 	}
 
-	DisplayHelper.prototype.drawMapCellForCamera = function
+	Display.prototype.drawMapCellForCamera = function
 	(
 		mapTerrains, 
 		mapCellSizeInPixels, 
@@ -88,13 +88,8 @@ function DisplayHelper(displaySizeInPixels, isColorEnabled)
 				mapCellSizeInPixels.x,
 				mapCellSizeInPixels.y
 			);
-	
-			this.drawVisualText
-			(
-				mapCellSizeInPixels,
-				cellTerrain.visual,
-				this.drawPos
-			);
+
+			cellTerrain.visual.draw(this, mapCellSizeInPixels, this.drawPos);
 
 			var entitiesPresent = cell.entitiesPresent;
 
@@ -113,7 +108,7 @@ function DisplayHelper(displaySizeInPixels, isColorEnabled)
 		}
 	}
 
-	DisplayHelper.prototype.drawFactionForCamera = function
+	Display.prototype.drawFactionForCamera = function
 	(
 		mapCellSizeInPixels, 
 		faction,
@@ -133,7 +128,7 @@ function DisplayHelper(displaySizeInPixels, isColorEnabled)
 		}
 	}
 
-	DisplayHelper.prototype.drawEntityForCamera = function
+	Display.prototype.drawEntityForCamera = function
 	(
 		mapCellSizeInPixels, 
 		entity,
@@ -148,83 +143,18 @@ function DisplayHelper(displaySizeInPixels, isColorEnabled)
 
 		var factionColor = entity.factionableData.faction().factionData.color;
 
-		this.drawVisualTextBanner
+		var visual = entity.defn().drawableDefn.visual;
+		visual.draw
 		(
+			this,
 			mapCellSizeInPixels,
-			entity.defn().drawableDefn.visual,
 			this.drawPos,
 			factionColor,
 			(isSelected == true ? "White" : "Gray")
 		);
 	}
-	
-	DisplayHelper.prototype.drawVisualText = function
-	(
-		mapCellSizeInPixels, 
-		visualText, 
-		drawPos
-	)
-	{
-		this.graphics.fillStyle = "Gray";
-		this.graphics.fillText
-		(
-			visualText.text,
-			drawPos.x + mapCellSizeInPixels.x / 3,
-			drawPos.y + mapCellSizeInPixels.y * .75
-		);		
-	}
 
-	DisplayHelper.prototype.drawVisualTextBanner = function
-	(
-		mapCellSizeInPixels, 
-		visualTextBanner, 
-		drawPos,
-		colorForFill,
-		colorForTextAndBorder
-	)
-	{
-		if (this.isColorEnabled == false)
-		{
-			colorForFill = "White";
-			colorForTextAndBorder = "Gray";
-		}
-
-		var sizeInPixels = visualTextBanner.sizeInPixels;
-		drawPos.multiplyScalar
-		(
-			2
-		).add
-		(
-			mapCellSizeInPixels
-		).subtract
-		(
-			sizeInPixels
-		).divideScalar(2)
-
-		this.graphics.fillStyle = colorForFill;
-		this.graphics.fillRect
-		(
-			drawPos.x, drawPos.y,
-			sizeInPixels.x, sizeInPixels.y		
-		);
-
-		this.graphics.strokeStyle = colorForTextAndBorder;
-		this.graphics.strokeRect
-		(
-			drawPos.x, drawPos.y,
-			sizeInPixels.x, sizeInPixels.y	
-		);
-
-		this.graphics.fillStyle = colorForTextAndBorder;
-		this.graphics.fillText
-		(
-			visualTextBanner.text,
-			drawPos.x + sizeInPixels.x * .25,
-			drawPos.y + sizeInPixels.y * .75
-		);		
-	}
-
-	DisplayHelper.prototype.drawWorld = function(world)
+	Display.prototype.drawWorld = function(world)
 	{
 		this.clear();
 
@@ -234,7 +164,7 @@ function DisplayHelper(displaySizeInPixels, isColorEnabled)
 			factionSelected.factionData.mapKnown, 
 			world.camera
 		);
-		
+
 		var mapCellSizeInPixels = world.map.cellSizeInPixels;
 
 		var entitySelected = world.entitySelected();
@@ -251,7 +181,7 @@ function DisplayHelper(displaySizeInPixels, isColorEnabled)
 		}
 	}
 
-	DisplayHelper.prototype.initialize = function()
+	Display.prototype.initialize = function()
 	{
 		this.canvas = document.createElement("canvas");
 		this.canvas.width = this.displaySizeInPixels.x;

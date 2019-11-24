@@ -6,7 +6,7 @@ function ActivityDefn_Move(actor, activity, parameters)
 
 	var map = world.map;
 	var entitySelected = actor;
-	var entitySelectedPosInCells = entitySelected.locatableData.posInCells;	
+	var entitySelectedPosInCells = entitySelected.locatableData.posInCells;
 
 	var destinationPosInCells = entitySelectedPosInCells.clone().add
 	(

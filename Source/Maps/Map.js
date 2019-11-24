@@ -34,7 +34,7 @@ function Map(terrains, cellSizeInPixels, sizeInCells, cells)
 			sizeInCells, 
 			cells
 		);
-		
+
 		return returnValue;
 	}
 
@@ -67,7 +67,7 @@ function Map(terrains, cellSizeInPixels, sizeInCells, cells)
 			sizeInCells, 
 			cells
 		);
-		
+
 		return returnValue;
 	}
 

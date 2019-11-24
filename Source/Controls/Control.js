@@ -26,7 +26,7 @@ function Control()
 				var propertyName = bindingPathElements[i];
 				objectToSet = objectToSet[propertyName];
 			}
-	
+
 			var propertyName = bindingPathElements[numberOfBindingPathElements - 1];
 			objectToSet[propertyName] = valueToSet;
 		}

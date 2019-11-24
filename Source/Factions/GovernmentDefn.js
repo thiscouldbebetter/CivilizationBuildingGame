@@ -5,7 +5,7 @@ function GovernmentDefn
 	hasSenate,
 	maxCitizensPerBaseBeforeUnhappiness,
 	maxCitizensPerBaseMadeContentByGarrison,
-	numberOfCitizensMadeUnhappyPerDeployedArmy,	
+	numberOfCitizensMadeUnhappyPerDeployedArmy,
 	foodAddedPerCellWithIrrigation,
 	commerceAddedPerCellWithCommerce,
 	fractionOfCommercePerBaseWastedFlat,

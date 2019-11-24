@@ -57,7 +57,7 @@ function BaseData
 		var quantityOfCommerceProduced = (commerceProduced == null ? 0 : commerceProduced.quantity);
 		var fractionOfCommerceWasted = 0; // hack
 		var fractionOfCommerceConserved = 1 - fractionOfCommerceWasted;
-		quantityOfCommerceProduced *= fractionOfCommerceConserved;		
+		quantityOfCommerceProduced *= fractionOfCommerceConserved;
 
 		var faction = base.factionableData.faction().factionData;
 		var fiscalData = faction.fiscalData;
@@ -89,18 +89,18 @@ function BaseData
 		{
 			var fractionOfCommerce = fractionsOfCommerce[i];
 			var nameOfResource = fractionOfCommerce.defnName;
-	
+
 			var quantityOfResourceFromCommerce = 
 				quantityOfCommerceProduced 
 				* fractionOfCommerce.quantity;
-			
+
 			if (i == indexOfResourceWithGreatestFractionOfCommerce)
 			{
 				quantityOfResourceFromCommerce = Math.ceil
 				(
 					quantityOfResourceFromCommerce
 				);
-			}	
+			}
 			else
 			{
 				quantityOfResourceFromCommerce = Math.floor
@@ -166,19 +166,19 @@ function BaseData
 					new ControlLabel("labelType", this, style, new Coords(0, 0), "Base"),
 					new ControlLabel("labelName", this, style, new Coords(1, 1), "Name:"),
 					new ControlLabel("infoName", this, style, new Coords(3, 1), baseData.name),
-	
+
 					containerDemographics,
 					containerIndustry,
 					containerActions,
 				]
 			);
-	
+
 			returnValue.controllable = base;
 			this.control = returnValue;
 		}
 
 		if (this.control.hasBeenModified == true)
-		{			
+		{
 			this.control.hasBeenModified = false;
 
 			this.industry.controlUpdate();

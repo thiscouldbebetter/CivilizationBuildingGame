@@ -9,9 +9,8 @@ function ActivityDefn_UserInputAccept(actor, activity, parameters)
 
 	if (actionsActiveFromInputHelper.length > 0)
 	{
-		ArrayHelper.appendItemsFromArrayToArray
+		actionsActiveFromInputHelper.appendTo
 		(
-			actionsActiveFromInputHelper,
 			actionsActiveForActor
 		);
 	}

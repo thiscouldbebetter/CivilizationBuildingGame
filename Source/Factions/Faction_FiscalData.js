@@ -4,9 +4,8 @@ function Faction_FiscalData(wealthStockpiled, fractionsOfCommerceToConvertToOthe
 	this.wealthStockpiled = wealthStockpiled;
 	this.fractionsOfCommerceToConvertToOtherResources = fractionsOfCommerceToConvertToOtherResources;
 
-	ArrayHelper.addLookupsToArray
+	this.fractionsOfCommerceToConvertToOtherResources.addLookups
 	(
-		this.fractionsOfCommerceToConvertToOtherResources, 
 		"defnName"
 	);
 }
@@ -36,7 +35,7 @@ function Faction_FiscalData(wealthStockpiled, fractionsOfCommerceToConvertToOthe
 
 				]
 			);
-		
+
 			this.control = control;
 		}
 

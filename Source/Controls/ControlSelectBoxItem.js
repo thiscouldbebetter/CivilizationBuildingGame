@@ -20,12 +20,12 @@ function ControlSelectBoxItem(controllable, style, text)
 				"[none]"
 			)
 
-			returnValues.push(listBoxItem);			
+			returnValues.push(listBoxItem);
 		}
 
 		for (var i = 0; i < selectables.length; i++)
 		{
-			var selectable = selectables[i];	
+			var selectable = selectables[i];
 
 			var listBoxItem = new ControlSelectBoxItem
 			(
@@ -49,13 +49,13 @@ function ControlSelectBoxItem(controllable, style, text)
 			returnValue.control = this;
 
 			var gridCellSize = this.style.gridCellSize;
-	
+
 			var style = returnValue.style;
 			//style.width = size.x * gridCellSize.x;
 			//style.height = size.y * gridCellSize.y;
 			returnValue.value = this.text;
 			returnValue.innerHTML = this.text;
-	
+
 			this.htmlElement = returnValue;
 		}
 

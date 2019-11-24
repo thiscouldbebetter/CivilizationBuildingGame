@@ -58,7 +58,7 @@ function World
 		}
 
 		var actorDefn = factionableSelected.defn().actorDefn;
-				
+
 		Globals.Instance.inputHelper.actionNamesAvailable_Set
 		(
 			actorDefn.actionNamesAvailable
@@ -134,7 +134,7 @@ function World
 			{
 				factions[i].factionData.controlUpdate(style, new Coords(1, 3));
 			}
-	
+
 			var control = new ControlContainer
 			(
 				"containerWorld", 
@@ -149,7 +149,7 @@ function World
 					factions[0].factionData.control
 				] 
 			);
-	
+
 			control.htmlElementUpdate();
 
 			this.control = control;
@@ -163,14 +163,14 @@ function World
 
 			this.control.children["infoTurn"].text_Set(this.turnsSoFar + 1);
 			this.control.childAddOrReplace(factionData.controlUpdate());
-	
+
 			var entitySelected = factionData.factionableSelected();
 			var entitySelectedControl = entitySelected.controlUpdate
 			(
 				this.control.style, 
 				new Coords(1, 20)
 			);
-	
+
 			this.control.childAddOrReplace
 			(
 				entitySelectedControl
@@ -231,7 +231,7 @@ function World
 
 		this.entitySelectedAdvance();
 
-		Globals.Instance.displayHelper.drawControl
+		Globals.Instance.display.drawControl
 		(
 			this.controlUpdate()
 		);
@@ -240,7 +240,7 @@ function World
 	World.prototype.updateForTimerTickAsVenue = function()
 	{
 		var entitySelected = this.entitySelected();
-		
+
 		// hack
 		if (entitySelected == null)
 		{
@@ -255,7 +255,7 @@ function World
 
 		var globals = Globals.Instance;
 
-		globals.displayHelper.drawWorld(this);
+		globals.display.drawWorld(this);
 
 		for (var i = 0; i < this.entitiesToSpawn.length; i++)
 		{

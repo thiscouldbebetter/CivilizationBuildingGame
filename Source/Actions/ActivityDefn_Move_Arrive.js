@@ -10,7 +10,7 @@ function ActivityDefn_Move_Arrive
 	var mapCellToMoveFrom = map.cellAtPos(entitySelectedPosInCells);
 	var indexOfEntitySelected = mapCellToMoveFrom.entitiesPresent.indexOf(entitySelected);
 	mapCellToMoveFrom.entitiesPresent.splice(indexOfEntitySelected, 1);
-	
+
 	var mapCellToMoveTo = map.cellAtPos(destinationPosInCells);
 	var entitiesAlreadyAtDestination = mapCellToMoveTo.entitiesPresent;
 	for (var i = 0; i < entitiesAlreadyAtDestination.length; i++)
@@ -22,14 +22,14 @@ function ActivityDefn_Move_Arrive
 			var defenderDefn = entityAlreadyAtDestination.defn().moverDefn;
 
 			var attackStrengthOfAttacker = attackerDefn.attacks[0].strength; // todo
-			var defenseStrengthOfDefender = defenderDefn.defenses[0].strength; // todo	
+			var defenseStrengthOfDefender = defenderDefn.defenses[0].strength; // todo
 
 			var totalOfCombatStrengths = 
 				attackStrengthOfAttacker
 				+ defenseStrengthOfDefender;
-	
+
 			var randomValue = Math.random();
-				
+
 			if (randomValue < attackStrengthOfAttacker / totalOfCombatStrengths)
 			{
 				entityAlreadyAtDestination.killableData.integrity = 0;
@@ -62,7 +62,7 @@ function ActivityDefn_Move_Arrive
 		(
 			entitySelected
 		);
-			
+
 		if (moverData.movesThisTurn <= 0)
 		{
 			entitySelected.turnableData.isDoneForThisTurn = true;

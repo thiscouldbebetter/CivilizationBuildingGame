@@ -2,8 +2,6 @@
 function ActivityDefn(name, parameters, perform)
 {
 	this.name = name;
-	this.parameters = parameters;
+	this.parameters = parameters.addLookups("name");
 	this.perform = perform;
-
-	ArrayHelper.addLookupsToArray(this.parameters, "name");
 }

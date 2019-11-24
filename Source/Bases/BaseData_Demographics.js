@@ -9,7 +9,7 @@ function BaseData_Demographics(population, foodStockpiled, areLocalMapCellsInUse
 {
 	// constants
 
-	BaseData_Demographics.offsetsOfMapCellsUsableBuild = function()	
+	BaseData_Demographics.offsetsOfMapCellsUsableBuild = function()
 	{
 		var returnValues = [];
 
@@ -179,7 +179,7 @@ function BaseData_Demographics(population, foodStockpiled, areLocalMapCellsInUse
 				{
 					returnValues.push(cellOffset.clone());
 				}
-				
+
 			}
 		} 
 
@@ -196,12 +196,12 @@ function BaseData_Demographics(population, foodStockpiled, areLocalMapCellsInUse
 			[ false, false, false, false, false ],
 			[ null, false, false, false, null ],
 		];
-			
+
 		var map = Globals.Instance.universe.world().map;
 		var basePosInCells = base.locatableData.posInCells;
 
 		var offsetsOfMapCellsUsable = BaseData_Demographics.offsetsOfMapCellsUsable();
-		
+
 		var mapCellOffsetsSortedByNumberOfResources = [];
 		var cellPos = new Coords(0, 0);
 
@@ -219,7 +219,7 @@ function BaseData_Demographics(population, foodStockpiled, areLocalMapCellsInUse
 				{
 					var resource = resourcesProducedByCell[r];
 					numberOfResourcesProducedByCell += resource.quantity;
-					
+
 					var j;
 					for (j = 0; j < mapCellOffsetsSortedByNumberOfResources.length; j++)
 					{
@@ -229,14 +229,14 @@ function BaseData_Demographics(population, foodStockpiled, areLocalMapCellsInUse
 							break;
 						}
 					}
-	
+
 					mapCellOffsetsSortedByNumberOfResources.splice
 					(
 						j, // insert pos
 						0, // don't remove any 
 						[ cellOffset, numberOfResourcesProducedByCell ]
 					);
-				}						
+				}
 			}
 		}
 
@@ -261,7 +261,7 @@ function BaseData_Demographics(population, foodStockpiled, areLocalMapCellsInUse
 
 		if (this.foodStockpiled < 0)
 		{
-			this.foodStockpiled = 0;		
+			this.foodStockpiled = 0;
 		}
 		else
 		{
@@ -301,7 +301,7 @@ function BaseData_Demographics(population, foodStockpiled, areLocalMapCellsInUse
 					cellPos.x = x;
 
 					var isCellInUse = areLocalMapCellsInUseRow[x];
-				
+
 					var controlForCell;
 
 					if (isCellInUse == null)
@@ -323,7 +323,7 @@ function BaseData_Demographics(population, foodStockpiled, areLocalMapCellsInUse
 							this,
 							style, 
 							null, // pos
-							isCellInUse	
+							isCellInUse
 						);
 					}
 
@@ -335,7 +335,7 @@ function BaseData_Demographics(population, foodStockpiled, areLocalMapCellsInUse
 			(
 				"gridMapCellsInUse",
 				this,
-				style,						
+				style,
 				new Coords(5, 5), // size
 				new Coords(1, 4), // pos
 				new Coords(5, 5), // gridSizeInCells
@@ -356,7 +356,7 @@ function BaseData_Demographics(population, foodStockpiled, areLocalMapCellsInUse
 					new ControlLabel("labelFood", this, style, new Coords(1, 2), "Food:"),
 					new ControlLabel("infoFood", this, style, new Coords(5, 2), this.foodStockpiled),
 
-					new ControlLabel("labelLandUsage", this, style, new Coords(1, 3), "Land Usage:"),	
+					new ControlLabel("labelLandUsage", this, style, new Coords(1, 3), "Land Usage:"),
 					gridMapCellsInUse
 				]
 			);

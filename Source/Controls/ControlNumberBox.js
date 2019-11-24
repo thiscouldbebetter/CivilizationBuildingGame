@@ -31,7 +31,7 @@ function ControlNumberBox(name, controllable, style, size, pos, min, max, bindin
 		if (this.htmlElement == null)
 		{
 			var gridCellSizeInPixels = this.style.gridCellSize;
-	
+
 			var returnValue = document.createElement("input");
 			returnValue.type = "number";
 			returnValue.min = this.min;
@@ -47,7 +47,7 @@ function ControlNumberBox(name, controllable, style, size, pos, min, max, bindin
 			style.left = posInPixels.x;
 			style.top = posInPixels.y;
 			returnValue.onchange = this.handleEventValueChanged.bind(this);
-	
+
 			this.htmlElement = returnValue;
 		}
 

@@ -13,7 +13,7 @@ function StorageHelper()
 		(
 			StorageHelper.SaveFileName,
 			null // todo - callback
-		);				
+		);
 	}
 
 	StorageHelper.prototype.saveWorldToFile = function(world)
@@ -45,7 +45,7 @@ function StorageHelper()
 				new Coords(0, 0), // pos, 
 				// children
 				[
-					new ControlLabel("labelStorage", this, style, new Coords(0, 0), "Storage"),	
+					new ControlLabel("labelStorage", this, style, new Coords(0, 0), "Storage"),
 				]
 			);
 
