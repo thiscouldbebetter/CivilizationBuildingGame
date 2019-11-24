@@ -1,0 +1,111 @@
+<html>
+<body>
+
+<!-- hack - These classes must come first. -->
+<script type="text/javascript" src="Utilities/ArrayHelper.js"></script>
+
+<script type="text/javascript" src="Actions/Action_Delay.js"></script>
+<script type="text/javascript" src="Actions/Action_Move.js"></script>
+<script type="text/javascript" src="Actions/Action_Pass.js"></script>
+<script type="text/javascript" src="Actions/Action_Sleep.js"></script>
+<script type="text/javascript" src="Actions/Activity.js"></script>
+<script type="text/javascript" src="Actions/ActionNameToButtonMapping.js"></script>
+<script type="text/javascript" src="Actions/ActivityDefn.js"></script>
+<script type="text/javascript" src="Actions/ActivityDefn_Move.js"></script>
+<script type="text/javascript" src="Actions/ActivityDefn_Move_Arrive.js"></script>
+<script type="text/javascript" src="Actions/ActivityDefn_UserInputAccept.js"></script>
+<script type="text/javascript" src="Actions/ActorData.js"></script>
+<script type="text/javascript" src="Actions/ActorDefn.js"></script>
+
+<script type="text/javascript" src="Bases/BaseData.js"></script>
+<script type="text/javascript" src="Bases/BaseData_Demographics.js"></script>
+<script type="text/javascript" src="Bases/BaseData_Improvements.js"></script>
+<script type="text/javascript" src="Bases/BaseData_Industry.js"></script>
+<script type="text/javascript" src="Bases/BaseData_Support.js"></script>
+<script type="text/javascript" src="Bases/BaseDefn.js"></script>
+<script type="text/javascript" src="Bases/BaseImprovementData.js"></script>
+<script type="text/javascript" src="Bases/BuildableDefn.js"></script>
+<script type="text/javascript" src="Bases/ImprovementDefn.js"></script>
+<script type="text/javascript" src="Bases/Resource.js"></script>
+<script type="text/javascript" src="Bases/ResourceDefn.js"></script>
+
+<script type="text/javascript" src="Controls/Control.js"></script>
+<script type="text/javascript" src="Controls/ControlButton.js"></script>
+<script type="text/javascript" src="Controls/ControlCheckbox.js"></script>
+<script type="text/javascript" src="Controls/ControlContainer.js"></script>
+<script type="text/javascript" src="Controls/ControlGrid.js"></script>
+<script type="text/javascript" src="Controls/ControlHelper.js"></script>
+<script type="text/javascript" src="Controls/ControlLabel.js"></script>
+<script type="text/javascript" src="Controls/ControlNumberBox.js"></script>
+<script type="text/javascript" src="Controls/ControlSelectBox.js"></script>
+<script type="text/javascript" src="Controls/ControlSelectBoxItem.js"></script>
+<script type="text/javascript" src="Controls/ControlStyle.js"></script>
+<script type="text/javascript" src="Controls/ControlTextBox.js"></script>
+
+<script type="text/javascript" src="Display/Camera.js"></script>
+<script type="text/javascript" src="Display/DisplayHelper.js"></script>
+<script type="text/javascript" src="Display/DrawableDefn.js"></script>
+<script type="text/javascript" src="Display/VisualText.js"></script>
+<script type="text/javascript" src="Display/VisualTextBanner.js"></script>
+
+<script type="text/javascript" src="Factions/Diplomacy.js"></script>
+<script type="text/javascript" src="Factions/DiplomaticRelations.js"></script>
+<script type="text/javascript" src="Factions/DiplomaticStatus.js"></script>
+<script type="text/javascript" src="Factions/FactionData.js"></script>
+<script type="text/javascript" src="Factions/Faction_FiscalData.js"></script>
+<script type="text/javascript" src="Factions/Faction_ResearchData.js"></script>
+<script type="text/javascript" src="Factions/FactionDefn.js"></script>
+<script type="text/javascript" src="Factions/FactionableData.js"></script>
+<script type="text/javascript" src="Factions/GovernmentDefn.js"></script>
+<script type="text/javascript" src="Factions/TechnologyDefn.js"></script>
+
+<script type="text/javascript" src="Geometry/Bounds.js"></script>
+<script type="text/javascript" src="Geometry/Coords.js"></script>
+<script type="text/javascript" src="Geometry/Direction.js"></script>
+<script type="text/javascript" src="Geometry/LocatableData.js"></script>
+
+<script type="text/javascript" src="Input/Input.js"></script>
+<script type="text/javascript" src="Input/InputHelper.js"></script>
+<script type="text/javascript" src="Input/InputToActionBinding.js"></script>
+
+<script type="text/javascript" src="Maps/EmplacementDefn.js"></script>
+<script type="text/javascript" src="Maps/Map.js"></script>
+<script type="text/javascript" src="Maps/MapCell.js"></script>
+<script type="text/javascript" src="Maps/MapCellImprovementDefn.js"></script>
+<script type="text/javascript" src="Maps/MapTerrain.js"></script>
+
+<script type="text/javascript" src="Units/AttackDefense.js"></script>
+<script type="text/javascript" src="Units/AttackDefenseType.js"></script>
+<script type="text/javascript" src="Units/KillableData.js"></script>
+<script type="text/javascript" src="Units/KillableDefn.js"></script>
+<script type="text/javascript" src="Units/MovementCost.js"></script>
+<script type="text/javascript" src="Units/MovementType.js"></script>
+<script type="text/javascript" src="Units/MoverData.js"></script>
+<script type="text/javascript" src="Units/MoverDefn.js"></script>
+<script type="text/javascript" src="Units/ObserverData.js"></script>
+<script type="text/javascript" src="Units/ObserverDefn.js"></script>
+<script type="text/javascript" src="Units/TurnableData.js"></script>
+<script type="text/javascript" src="Units/TurnableDefn.js"></script>
+
+<script type="text/javascript" src="Utilities/Cloneable.js"></script>
+<script type="text/javascript" src="Utilities/Debug.js"></script>
+<script type="text/javascript" src="Utilities/FileHelper.js"></script>
+<script type="text/javascript" src="Utilities/NameValuePair.js"></script>
+<script type="text/javascript" src="Utilities/Serializer.js"></script>
+<script type="text/javascript" src="Utilities/StorageHelper.js"></script>
+
+<script type="text/javascript" src="Entity.js"></script>
+<script type="text/javascript" src="EntityDefn.js"></script>
+<script type="text/javascript" src="Globals.js"></script>
+<script type="text/javascript" src="Universe.js"></script>
+<script type="text/javascript" src="UniverseDefn.js"></script>
+<script type="text/javascript" src="World.js"></script>
+<script type="text/javascript" src="WorldBuilder.js"></script>
+<script type="text/javascript" src="Demo_UniverseDefnBuild.js"></script>
+
+<script type="text/javascript" src="main.js"></script>
+
+<script type="text/javascript">
+main();
+</script>
+
