@@ -120,6 +120,7 @@ function Demo_UniverseDefnBuild(mapCellSizeInPixels)
 
 	var bmt = buildMapTerrain;
 	var vt = function(text) { return new VisualText(text); };
+	var vr = function(color) { return new VisualRectangle(color); }
 
 	var mapTerrains =
 	[
@@ -127,13 +128,13 @@ function Demo_UniverseDefnBuild(mapCellSizeInPixels)
 		bmt("Desert", 			"d",  	"Tan", 			1, 		[1, 0], [0, 0, 1], [1, 1, 1], [2, 5, 5],	vt("d")),
 		bmt("Desert-Oasis", 	"do", 	"Tan", 			1, 		[1, 0], [0, 3, 1], [1, 1, 1], [5, 5, 2],	vt("o")),
 		bmt("Desert-Oil", 		"dp", 	"Tan", 			1, 		[1, 1], [0, 0, 4], [1, 1, 1], [5, 5, 2],	vt("p")),
-		bmt("Glacier", 			"g",   	"White", 		1, 		[2, 0], [0, 0, 0], [0, 0, 1], [2, 5, 15],	vt("g")),
-		bmt("Glacier-Ivory", 	"gi", 	"White", 		1, 		[2, 0], [4, 1, 1], [0, 0, 1], [2, 5, 15],	vt("i")),
-		bmt("Glacier-Oil", 		"gp", 	"White",  		1, 		[2, 0], [0, 0, 4], [0, 0, 1], [2, 5, 15],	vt("gp")),
 		bmt("Forest", 			"f",  	"DarkGreen", 	1.5, 	[2, 0], [0, 1, 2], [0, 0, 0], [0, 0, 0],	vt("f")),
 		bmt("Forest-Birds", 	"fb", 	"DarkGreen", 	1.5,	[2, 0], [0, 3, 2], [0, 0, 0], [0, 0, 0],	vt("fb")),
 		bmt("Forest-Silk", 		"fs", 	"DarkGreen", 	1.5, 	[2, 0], [3, 1, 2], [0, 0, 0], [0, 0, 0],	vt("fs")),
-		bmt("Grassland", 		".", 	"Green", 		1, 		[1, 0], [0, 2, 0], [0, 0, 0], [0, 0, 0],	vt("g")),
+		bmt("Glacier", 			"g",   	"White", 		1, 		[2, 0], [0, 0, 0], [0, 0, 1], [2, 5, 15],	vt("g")),
+		bmt("Glacier-Ivory", 	"gi", 	"White", 		1, 		[2, 0], [4, 1, 1], [0, 0, 1], [2, 5, 15],	vt("i")),
+		bmt("Glacier-Oil", 		"gp", 	"White",  		1, 		[2, 0], [0, 0, 4], [0, 0, 1], [2, 5, 15],	vt("gp")),
+		bmt("Grassland", 		".", 	"Green", 		1, 		[1, 0], [0, 2, 0], [0, 0, 0], [0, 0, 0],	vr("Green")),
 		bmt("Grassland-Rich", 	".r", 	"Green", 		1, 		[1, 0], [0, 2, 1], [1, 1, 0], [2, 5, 0],	vt("gr")),
 		bmt("Hills", 			"h", 	"Green", 		2,		[2, 0], [0, 1, 0], [0, 1, 3], [2, 10, 10],	vt("h")),
 		bmt("Hills-Coal", 		"hc", 	"Green", 		2,		[2, 0], [0, 1, 2], [0, 1, 3], [2, 10, 10],	vt("hc")),
@@ -316,7 +317,7 @@ function Demo_UniverseDefnBuild(mapCellSizeInPixels)
 				]
 			),
 			new BaseDefn(),
-			new DrawableDefn(new VisualTextBanner("B", mapCellSizeInPixels)),
+			new DrawableDefn(new VisualTextBanner("B", "White", "Gray")),
 			new ObserverDefn(2),
 			new TurnableDefn(BaseData.updateEntityForTurn)
 		]

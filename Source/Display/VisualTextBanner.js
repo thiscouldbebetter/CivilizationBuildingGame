@@ -1,26 +1,15 @@
 
-function VisualTextBanner(text, sizeInPixels)
+function VisualTextBanner(text)
 {
 	this.text = text;
-	this.sizeInPixels = sizeInPixels;
 }
 {
 	VisualTextBanner.prototype.draw = function
 	(
-		display,
-		size,
-		drawPos,
-		colorForFill,
-		colorForTextAndBorder
+		display, size, drawPos
 	)
 	{
-		if (display.isColorEnabled == false)
-		{
-			colorForFill = "White";
-			colorForTextAndBorder = "Gray";
-		}
-
-		var sizeInPixels = this.sizeInPixels;
+		var sizeInPixels = size;
 
 		drawPos.multiplyScalar
 		(
@@ -34,27 +23,27 @@ function VisualTextBanner(text, sizeInPixels)
 		).divideScalar(2);
 
 		var graphics = display.graphics;
-		graphics.fillStyle = colorForFill;
 		graphics.fillRect
 		(
 			drawPos.x, drawPos.y,
 			sizeInPixels.x, sizeInPixels.y
 		);
 
-		graphics.strokeStyle = colorForTextAndBorder;
 		graphics.strokeRect
 		(
 			drawPos.x, drawPos.y,
 			sizeInPixels.x, sizeInPixels.y
 		);
 
-		graphics.fillStyle = colorForTextAndBorder;
+		var fillStyleToRestore = graphics.fillStyle;
+		graphics.fillStyle = graphics.strokeStyle;
 		graphics.fillText
 		(
 			this.text,
 			drawPos.x + sizeInPixels.x * .25,
 			drawPos.y + sizeInPixels.y * .75
 		);
+		graphics.fillStyle = fillStyleToRestore;
 	}
 
 }

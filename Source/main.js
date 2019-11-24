@@ -49,8 +49,7 @@ function main()
 		mapCellSizeInPixels.clone().multiply
 		(
 			mapSizeInCells
-		),
-		false // isColorEnabled
+		)
 	);
 
 	Globals.Instance.initialize

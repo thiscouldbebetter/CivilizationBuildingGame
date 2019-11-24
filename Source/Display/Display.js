@@ -1,14 +1,13 @@
 
-function Display(displaySizeInPixels, isColorEnabled)
+function Display(displaySizeInPixels)
 {
 	this.displaySizeInPixels = displaySizeInPixels;
-	this.isColorEnabled = isColorEnabled;
 }
 
 {
 	Display.prototype.clear = function()
 	{
-		this.graphics.fillStyle = (this.isColorEnabled == true ? "Black" : "White");
+		this.graphics.fillStyle = "Black";
 		this.graphics.fillRect
 		(
 			0, 0, 
@@ -80,15 +79,6 @@ function Display(displaySizeInPixels, isColorEnabled)
 
 			var cellTerrainCodeChar = cell.terrainCodeChar;
 			var cellTerrain = mapTerrains[cellTerrainCodeChar];
-			this.graphics.fillStyle = (this.isColorEnabled == true ? cellTerrain.color : "White");
-			this.graphics.fillRect
-			(
-				this.drawPos.x,
-				this.drawPos.y,
-				mapCellSizeInPixels.x,
-				mapCellSizeInPixels.y
-			);
-
 			cellTerrain.visual.draw(this, mapCellSizeInPixels, this.drawPos);
 
 			var entitiesPresent = cell.entitiesPresent;
@@ -143,14 +133,12 @@ function Display(displaySizeInPixels, isColorEnabled)
 
 		var factionColor = entity.factionableData.faction().factionData.color;
 
-		var visual = entity.defn().drawableDefn.visual;
+		var visual = new VisualColors(factionColor, "Gray", entity.defn().drawableDefn.visual);
 		visual.draw
 		(
 			this,
 			mapCellSizeInPixels,
-			this.drawPos,
-			factionColor,
-			(isSelected == true ? "White" : "Gray")
+			this.drawPos
 		);
 	}
 
